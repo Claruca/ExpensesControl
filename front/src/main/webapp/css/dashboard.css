@@ -114,3 +114,8 @@ body {
 .bg-dark {
     background-color: #74468cf5 !important;
 }
+
+.imatge{
+    width: 70%;
+    height: auto;
+}

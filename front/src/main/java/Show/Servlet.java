@@ -1,7 +1,5 @@
 package Show;
 
-import DB.BeanDB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +18,8 @@ public class Servlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        BeanDB reading = new BeanDB("hola", "mundo");
-        System.out.println(reading);
+//        BeanDB reading = new BeanDB("hola", "mundo");
+//        System.out.println(reading);
 //        request.getRequestDispatcher("index").forward(request,response);
 
     }

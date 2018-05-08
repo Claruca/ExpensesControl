@@ -7,11 +7,13 @@ public class Expenses {
     private int id;
     private String category;
     private double amount;
+    private int idUsuari;
 
-    public Expenses(int id, String category, double amount) {
+    public Expenses(int id, String category, double amount, int idUsuari) {
         this.id = id;
         this.category = category;
         this.amount = amount;
+        this.idUsuari = idUsuari;
     }
 
     public int getId() {
@@ -37,5 +39,13 @@ public class Expenses {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public int getIdUsuari() {
+        return idUsuari;
+    }
+
+    public void setIdUsuari(int idUsuari) {
+        this.idUsuari = idUsuari;
     }
 }

@@ -10,7 +10,7 @@ public class Users {
     private String name;
     private String surname;
     private String alias;
-    private double balance;
+    private String balance;
     private ArrayList<Expenses> expencount;
 
 
@@ -46,11 +46,11 @@ public class Users {
         this.alias = alias;
     }
 
-    public double getBalance() {
+    public String getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(String balance) {
         this.balance = balance;
     }
 
@@ -62,7 +62,7 @@ public class Users {
         this.expencount = expencount;
     }
 
-    public Users(int id, String name, String surname, String alias, double balance) {
+    public Users(int id, String name, String surname, String alias, String balance) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -70,4 +70,6 @@ public class Users {
         this.balance = balance;
     }
 
+    public Users() {
+    }
 }

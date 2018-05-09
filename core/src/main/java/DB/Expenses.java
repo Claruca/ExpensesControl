@@ -4,24 +4,20 @@ package DB;
  * Created by clara.marti on 08/05/2018.
  */
 public class Expenses {
-    private int id;
+    private String id;
     private String category;
-    private double amount;
-    private int idUsuari;
+    private String amount;
+    private String idUsuari;
 
-    public Expenses(int id, String category, double amount, int idUsuari) {
-        this.id = id;
-        this.category = category;
-        this.amount = amount;
-        this.idUsuari = idUsuari;
+
+    public Expenses() {
     }
 
-    public int getId() {
-
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -33,19 +29,19 @@ public class Expenses {
         this.category = category;
     }
 
-    public double getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public int getIdUsuari() {
+    public String getIdUsuari() {
         return idUsuari;
     }
 
-    public void setIdUsuari(int idUsuari) {
+    public void setIdUsuari(String idUsuari) {
         this.idUsuari = idUsuari;
     }
 }

@@ -9,8 +9,8 @@
 
 
 <%
-    Users users = new Users(1, "Clara", "Martí", "claruca", "0.00");
-
+    //    request.setAttribute(id);
+//    Users users = new Users(1, "Clara", "Martí", "claruca", "0.00");
 
 
 %>
@@ -140,10 +140,15 @@
                     <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
                          alt="Card image" style="width:100%">
                     <div class="card-body">
-                        <h4 class="card-title"><%out.println(users.getName() + " " + users.getSurname());%></h4>
-                        <%--<p class="card-text">Some example text some example text. John Doe is an architect and--%>
-                        <%--engineer</p>--%>
-                        <h3 class="card-text"><%out.println(users.getBalance());%></h3>
+                        <h4 class="card-title"><%
+
+                            Users newusu = new Users();
+                            String usu = (String) request.getAttribute("id");
+                            newusu.setId(usu);
+                            out.println(newusu.getId());%></h4>
+                        <p class="card-text">Some example text some example text. John Doe is an architect and
+                            engineer</p>
+                        <%--<h3 class="card-text"><%out.println(users.getBalance());%></h3>--%>
                         <h3 class="card-text"></h3>
                         <a href="#" class="btn btn-primary btn-outline-success">See Profile</a>
                     </div>
@@ -153,9 +158,9 @@
 
                 <form class="form-inline my-2 my-md-0" method="post" action="home">
                     <div class="input-group">
-                        <input class="form-control mr-sm-3" name="money" type="text" placeholder="&euro"
+                        <input class="form-control mr-sm-3" name="id" type="text" placeholder="&euro"
                                aria-label="Afegir">
-                        <input type="hidden" name="id" value=""><br/>"
+                        <%--<input type="hidden" name="id" value=""><br/>"--%>
                         <div class="input-group-btn">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Afegir</button>
                         </div>
@@ -163,10 +168,6 @@
                 </form>
 
 
-
-             <%   String bla = (String) request.getAttribute("moni");
-
-                users.setBalance(bla); %>
                 <%--<h2>Section title</h2>
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">

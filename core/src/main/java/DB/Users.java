@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by clara.marti on 08/05/2018.
  */
 public class Users {
-    private int id;
+    private String id;
     private String name;
     private String surname;
     private String alias;
@@ -14,11 +14,11 @@ public class Users {
     private ArrayList<Expenses> expencount;
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -62,7 +62,7 @@ public class Users {
         this.expencount = expencount;
     }
 
-    public Users(int id, String name, String surname, String alias, String balance) {
+    public Users(String id, String name, String surname, String alias, String balance) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -70,6 +70,10 @@ public class Users {
         this.balance = balance;
     }
 
+    public Users(String id) {
+    }
+
     public Users() {
     }
+
 }

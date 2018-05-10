@@ -1,4 +1,6 @@
-<%@ page import="DB.Users" %><%--
+<%@ page import="DB.Users" %>
+<%@ page import="DB.DBConnection" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: clara.marti
   Date: 08/05/2018
@@ -41,6 +43,17 @@
 </nav>
 
 <div class="container-fluid">
+
+    <%DBConnection db = new DBConnection();
+        List<Users> list = db.addUsers();
+        for (Users usuaris : list){
+            out.println(usuaris.getId() + usuaris.getName()+usuaris.getSurname()+usuaris.getBalance());
+        }
+
+
+
+
+    %>
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">

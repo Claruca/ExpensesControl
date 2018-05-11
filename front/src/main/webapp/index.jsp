@@ -44,16 +44,7 @@
 
 <div class="container-fluid">
 
-    <%DBConnection db = new DBConnection();
-        List<Users> list = db.addUsers();
-        for (Users usuaris : list){
-            out.println(usuaris.getId() + usuaris.getName()+usuaris.getSurname()+usuaris.getBalance());
-        }
 
-
-
-
-    %>
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
@@ -153,12 +144,23 @@
                     <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
                          alt="Card image" style="width:100%">
                     <div class="card-body">
-                        <h4 class="card-title"><%
 
-                            Users newusu = new Users();
-                            String usu = (String) request.getAttribute("id");
-                            newusu.setId(usu);
-                            out.println(newusu.getId());%></h4>
+                        <%
+                            DBConnection db = new DBConnection();
+                            List<Users> list = db.addUsers();
+                            for (Users usu : list) {
+                                out.println("<h3>" + usu.getSurname() + "</h3>" + "<h3>" + usu.getName() + "</h3>");
+
+//            "<p>" + out.println(usu.getId(), usu.getName(), usu.getSurname(), usu.getBalance() + "</p>");
+                            }
+
+                        %>
+                        <%--<h4 class="card-title"><%--%>
+
+                            <%--Users newusu = new Users();--%>
+                            <%--String usu = (String) request.getAttribute("id");--%>
+                            <%--newusu.setId(usu);--%>
+                            <%--out.println(newusu.getId());%></h4>--%>
                         <p class="card-text">Some example text some example text. John Doe is an architect and
                             engineer</p>
                         <%--<h3 class="card-text"><%out.println(users.getBalance());%></h3>--%>

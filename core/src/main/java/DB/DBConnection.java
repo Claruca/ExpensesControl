@@ -26,7 +26,7 @@ public class DBConnection {
         ArrayList<Users> llistaUsuaris = new ArrayList<Users>();
 
         try {
-            Class.forName(JDBC_DRIVER);
+            Class.forName("org.h2.Driver");
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
             String sql = "SELECT * FROM Exemple;";

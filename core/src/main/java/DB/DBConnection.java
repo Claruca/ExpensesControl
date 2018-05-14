@@ -22,7 +22,7 @@ public class DBConnection {
     static final String PASS = "system";
 
 
-    public List<Users> addUsers() {
+    public List<Users> showUsers() {
         ArrayList<Users> llistaUsuaris = new ArrayList<Users>();
 
         try {
@@ -44,11 +44,34 @@ public class DBConnection {
                 llistaUsuaris.add(usu);
             }
 
+            stmt.close();
+            con.close();
+
 
         } catch (Exception e) {
             System.out.println((e.toString()));
         }
         return llistaUsuaris;
 
+    }
+
+    public static void addUser(String id, String name, String surname, String balance) {
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+
+            String update = "INSERT INTO Exemple(ID, NAME, LASTNAME, BALANCE) VALUES ('" + id + "','" + name + "','" + surname + "','" + balance + "')";
+
+            stmt.executeUpdate(update);
+
+            stmt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println((e.toString()));
+
+        }
     }
 }

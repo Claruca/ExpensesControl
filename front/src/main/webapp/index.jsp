@@ -10,14 +10,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<%
-    //    request.setAttribute(id);
-//    Users users = new Users(1, "Clara", "Martí", "claruca", "0.00");
-
-
-%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,47 +132,53 @@
             <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
             <div class="my-4 w-100 ml-sm-auto col-lg-9 px-4">
                 <h2>Usuaris</h2>
-                <div class="card" style="width:400px">
+                    <%
+                DBConnection db = new DBConnection();
+                       List<Users> list = db.showUsers();
+                       for (Users usu : list){
+                           out.println("<div class=\"card\" style=\"width:400px\">\n" +
+"                    <img class=\"card-img-top\" src=\"https://www.w3schools.com/bootstrap4/img_avatar1.png\"\n" +
+"                         alt=\"Card image\" style=\"width:100%\">\n" +
+"                    <div class=\"card-body\">\n" +
+"                        <h3 class=\"card-text\">\n" +
+"                            <h4>"+usu.getId()+"</h4>\n" +
+"                            <h4>"+usu.getName()+"</h4>\n" +
+"                            <h4>"+usu.getSurname()+"</h4>\n" +
+"                            <h4>"+usu.getBalance()+"</h4>\n" +
+"                            <a href=\"#\" class=\"btn btn-primary btn-outline-success\">See Profile</a>\n" +
+"                        </h3>\n" +
+"                        <a href=\"#\" class=\"btn btn-primary btn-outline-success\">See Profile</a>\n" +
+"                    </div>\n" +
+"                    <br>\n" +
+"                </div>");
+}%>
+
+                <a href="register.html" class="btn btn-primary btn-outline-success">See Profile</a>
+
+
+                <%--<div class="card" style="width:400px">
                     <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
                          alt="Card image" style="width:100%">
                     <div class="card-body">
-
-                        <%
-                            DBConnection db = new DBConnection();
-                            List<Users> list = db.addUsers();
-                            for (Users usu : list) {
-                                out.println("<h3>" + usu.getSurname() + "</h3>" + "<h3>" + usu.getName() + "</h3>");
-
-//            "<p>" + out.println(usu.getId(), usu.getName(), usu.getSurname(), usu.getBalance() + "</p>");
-                            }
-
-                        %>
-                        <%--<h4 class="card-title"><%--%>
-
-                            <%--Users newusu = new Users();--%>
-                            <%--String usu = (String) request.getAttribute("id");--%>
-                            <%--newusu.setId(usu);--%>
-                            <%--out.println(newusu.getId());%></h4>--%>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and
-                            engineer</p>
-                        <%--<h3 class="card-text"><%out.println(users.getBalance());%></h3>--%>
-                        <h3 class="card-text"></h3>
+                        <h3 class="card-text">
+                            <a href="#" class="btn btn-primary btn-outline-success">See Profile</a>
+                        </h3>
                         <a href="#" class="btn btn-primary btn-outline-success">See Profile</a>
                     </div>
                     <br>
                 </div>
+                <a href="register.html" class="btn btn-primary btn-outline-success">See Profile</a>--%>
 
-
-                <form class="form-inline my-2 my-md-0" method="post" action="home">
-                    <div class="input-group">
-                        <input class="form-control mr-sm-3" name="id" type="text" placeholder="&euro"
-                               aria-label="Afegir">
-                        <%--<input type="hidden" name="id" value=""><br/>"--%>
-                        <div class="input-group-btn">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Afegir</button>
-                        </div>
-                    </div>
-                </form>
+                <%-- <form class="form-inline my-2 my-md-0" method="post" action="home">
+                     <div class="input-group">
+                         <input class="form-control mr-sm-3" name="id" type="text" placeholder="&euro"
+                                aria-label="Afegir">
+                         &lt;%&ndash;<input type="hidden" name="id" value=""><br/>"&ndash;%&gt;
+                         <div class="input-group-btn">
+                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Afegir</button>
+                         </div>
+                     </div>
+                 </form>--%>
 
 
                 <%--<h2>Section title</h2>

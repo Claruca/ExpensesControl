@@ -19,4 +19,13 @@
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>InsertData</servlet-name>
+        <servlet-class>Show.InsertData</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertData</servlet-name>
+        <url-pattern>/insert</url-pattern>
+    </servlet-mapping>
 </web-app>

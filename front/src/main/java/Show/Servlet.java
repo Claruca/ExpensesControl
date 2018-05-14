@@ -24,15 +24,6 @@ public class Servlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//        DBConnection db = new DBConnection();
-
-//        String moni = request.getParameter("money");
-        String id = request.getParameter("id");
-
-//        db.newExpense(id);
-//        request.setAttribute("moni",moni);
-
-        request.setAttribute("id", id);
 
         System.out.println();
         request.getRequestDispatcher("index.jsp").forward(request, response);

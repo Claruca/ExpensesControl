@@ -56,13 +56,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="shopping-cart"></span>
-                            Products
+                            Afegir
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a href="register.html" class="nav-link">
                             <span data-feather="users"></span>
-                            Customers
+                            Afegir Usuari
                         </a>
                     </li>
                     <li class="nav-item">
@@ -133,82 +133,22 @@
             <div class="my-4 w-100 ml-sm-auto col-lg-9 px-4">
                 <h2>Usuaris</h2>
                     <%
-                DBConnection db = new DBConnection();
+                       DBConnection db = new DBConnection();
                        List<Users> list = db.showUsers();
                        for (Users usu : list){
-                           out.println("<div class=\"card\" style=\"width:400px\">\n" +
+                           out.println("<div class=\"card text-center d-inline-block\" style=\"width:200px\">\n" +
 "                    <img class=\"card-img-top\" src=\"https://www.w3schools.com/bootstrap4/img_avatar1.png\"\n" +
 "                         alt=\"Card image\" style=\"width:100%\">\n" +
 "                    <div class=\"card-body\">\n" +
-"                        <h3 class=\"card-text\">\n" +
-"                            <h4>"+usu.getId()+"</h4>\n" +
-"                            <h4>"+usu.getName()+"</h4>\n" +
-"                            <h4>"+usu.getSurname()+"</h4>\n" +
-"                            <h4>"+usu.getBalance()+"</h4>\n" +
-"                            <a href=\"#\" class=\"btn btn-primary btn-outline-success\">See Profile</a>\n" +
-"                        </h3>\n" +
-"                        <a href=\"#\" class=\"btn btn-primary btn-outline-success\">See Profile</a>\n" +
+"                         <h3 class=\"card-text\">"+usu.getName()+"</h3>" +
+"                         <h3 class=\"card-text\">"+usu.getSurname()+"</h3>\n" +
+"                            <p>"+usu.getBalance()+"</p>\n" +
+"                            <a href=\"/add?id="+usu.getId()+"\" class=\"btn btn-primary btn-outline-success\">Afegir Gasto</a>\n" +
 "                    </div>\n" +
 "                    <br>\n" +
 "                </div>");
 }%>
 
-                <a href="register.html" class="btn btn-primary btn-outline-success">See Profile</a>
-
-
-                <%--<div class="card" style="width:400px">
-                    <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
-                         alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h3 class="card-text">
-                            <a href="#" class="btn btn-primary btn-outline-success">See Profile</a>
-                        </h3>
-                        <a href="#" class="btn btn-primary btn-outline-success">See Profile</a>
-                    </div>
-                    <br>
-                </div>
-                <a href="register.html" class="btn btn-primary btn-outline-success">See Profile</a>--%>
-
-                <%-- <form class="form-inline my-2 my-md-0" method="post" action="home">
-                     <div class="input-group">
-                         <input class="form-control mr-sm-3" name="id" type="text" placeholder="&euro"
-                                aria-label="Afegir">
-                         &lt;%&ndash;<input type="hidden" name="id" value=""><br/>"&ndash;%&gt;
-                         <div class="input-group-btn">
-                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Afegir</button>
-                         </div>
-                     </div>
-                 </form>--%>
-
-
-                <%--<h2>Section title</h2>
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1,001</td>
-                            <td>Lorem</td>
-                            <td>ipsum</td>
-                            <td>dolor</td>
-                            <td>sit</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="alert alert-success alert-dismissible fade show">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Success!</strong> This alert box could indicate a successful or positive action.
-                    </div>
-                </div>--%>
         </main>
     </div>
 </div>

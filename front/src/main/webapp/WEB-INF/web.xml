@@ -28,4 +28,14 @@
         <servlet-name>InsertData</servlet-name>
         <url-pattern>/insert</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddExpense</servlet-name>
+        <servlet-class>Show.AddExpense</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddExpense</servlet-name>
+        <url-pattern>/add/*</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -74,4 +74,37 @@ public class DBConnection {
 
         }
     }
+
+
+    public Users eachuser (String id){
+        Users usuari = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM Exemple WHERE ID ='" + id + "'";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                usuari.setId(rs.getString("ID"));
+                usuari.setName(rs.getString("NAME"));
+                usuari.setSurname(rs.getString("LASTNAME"));
+                usuari.setBalance(rs.getString("BALANCE"));
+            }   else {
+                System.out.println("error");
+
+            }
+            stmt.close();
+            con.close();
+
+
+        } catch (Exception e) {
+            System.out.println((e.toString()));
+        }
+        return usuari;
+
+    }
+
 }

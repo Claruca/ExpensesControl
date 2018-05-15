@@ -18,15 +18,17 @@ import java.io.IOException;
 public class Servlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request, response);
 
+        String idUsuari = request.getParameter("id");
+        DBConnection db = new DBConnection();
+        Users oneUsu = db.eachuser(idUsuari);
+        request.setAttribute("oneUsu", oneUsu);
+        request.getRequestDispatcher("exemple.jsp").forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        System.out.println();
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        this.doGet(request, response);
     }
 
 

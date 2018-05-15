@@ -2,6 +2,7 @@ package Show;
 
 import DB.DBConnection;
 import DB.Users;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +23,11 @@ public class InsertData extends HttpServlet {
         String surname = request.getParameter("surname");
         String balance = request.getParameter("balance");
 
+//        Gson gson = new Gson();
+//        Users obj = gson.fromJson(response.toString(), Users.class);
+
         DBConnection.addUser(id, name, surname, balance);
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
 
     }

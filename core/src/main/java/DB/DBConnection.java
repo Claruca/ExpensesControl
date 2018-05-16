@@ -76,30 +76,28 @@ public class DBConnection {
     }
 
 
-    public Users eachuser (String id){
-        Users usuari = null;
+    public Users eachuser(String id) {
 
+        Users usuari = null;
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stmt = con.createStatement();
             String sql = "SELECT * FROM Exemple WHERE ID ='" + id + "'";
 
+            Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
-            if (rs.next()) {
+            while (rs.next()) {
+                usuari = new Users();
                 usuari.setId(rs.getString("ID"));
                 usuari.setName(rs.getString("NAME"));
                 usuari.setSurname(rs.getString("LASTNAME"));
                 usuari.setBalance(rs.getString("BALANCE"));
-            }   else {
-                System.out.println("error");
+
+                stmt.close();
+                con.close();
 
             }
-            stmt.close();
-            con.close();
-
-
         } catch (Exception e) {
             System.out.println((e.toString()));
         }
@@ -107,4 +105,24 @@ public class DBConnection {
 
     }
 
+
+    public static void addexpense(String id, String category, String amount, String idusuari) {
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+
+            String addGasto = "INSERT INTO GASTOS (id_g,category,amount,iduser) VALUES('" + id + "','" + category + "','" + amount + "'," + idusuari + ")";
+            stmt.executeQuery(addGasto);
+//
+            stmt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+    }
+
 }
+
+//    Insert into gastos (id_g,category,amount,iduser) values (01,'cuina',1.6,1);

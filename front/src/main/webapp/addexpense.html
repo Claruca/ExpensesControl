@@ -2,19 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <title>Title</title>
 </head>
 
 <body>
 
-<form class="form-inline my-2 my-md-0" method="post" action="add/*">
+<form class="form-inline my-2 my-md-0" method="post" action="/add">
     <div class="input-group">
-        <input class="form-control mr-sm-3" name="name" type="text" placeholder="name"
-               aria-label="Nom">
+        <input class="form-control mr-sm-3" name="id_g" type="text" placeholder="id_g"
+               aria-label="Id Despesa">
         <input class="form-control mr-sm-3" name="category" type="text" placeholder="category"
                aria-label="Categoria">
         <input class="form-control mr-sm-3" name="amount" type="text" placeholder="amount"
                aria-label="Quantitat">
+        <input class="form-control mr-sm-3" name="idusuari" type="text" placeholder="idusuari"
+               aria-label="Id Usuari">
         <div class="input-group-btn">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Afegir gasto</button>
         </div>

@@ -14,8 +14,8 @@ import java.io.IOException;
 /**
  * Created by clara.marti on 26/04/2018.
  */
-@WebServlet(name = "Servlet")
-public class Servlet extends HttpServlet {
+@WebServlet(name = "OneUser")
+public class OneUser extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -23,13 +23,12 @@ public class Servlet extends HttpServlet {
         DBConnection db = new DBConnection();
         Users oneUsu = db.eachuser(idUsuari);
         request.setAttribute("oneUsu", oneUsu);
-        request.getRequestDispatcher("exemple.jsp").forward(request,response);
+        request.getRequestDispatcher("caca.jsp").forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        this.doGet(request, response);
-    }
 
+    }
 
 }

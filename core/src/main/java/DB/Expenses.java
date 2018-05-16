@@ -6,7 +6,7 @@ package DB;
 public class Expenses {
     private String id;
     private String category;
-    private int amount;
+    private String amount;
     private String idUsuari;
 
 
@@ -29,11 +29,11 @@ public class Expenses {
         this.category = category;
     }
 
-    public int getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
@@ -46,11 +46,14 @@ public class Expenses {
     }
 }
 
-/*
-H2 tabla
+  /*  H2 tabla
     CREATE TABLE PUBLIC.GASTOS
-        (id INTEGER NOT NULL,
+        (id_g INTEGER NOT NULL,
         category VARCHAR(25),
         amount NUMBER(5,2) NOT NULL,
         iduser VARCHAR(5),
-        PRIMARY KEY (id))*/
+        PRIMARY KEY (id_g),
+        FOREIGN KEY (iduser) REFERENCES EXEMPLE(ID))*/
+
+
+//    Insert into gastos (id_g,category,amount,iduser) values (01,'cuina',1.6,1);

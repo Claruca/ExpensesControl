@@ -1,7 +1,9 @@
 package Show;
 
 import DB.DBConnection;
+import DB.Expenses;
 import DB.Users;
+import com.sun.rmi.rmid.ExecPermission;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,43 +21,23 @@ import java.sql.Statement;
 @WebServlet(name = "AddExpense")
 public class AddExpense extends HttpServlet {
 
-    static final String JDBC_DRIVER = "org.h2.Driver";
-    static final String DB_URL = "jdbc:h2:~/test";
-    static final String USER = "admin";
-    static final String PASS = "system";
-
-    /*private Users whichusu(String name, String id) {
-        try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stmt = con.createStatement();
-
-            Users usu = new Users();
-
-
-            stmt.close();
-            con.close();
-
-
-        } catch (Exception e) {
-            System.out.println((e.toString()));
-        }
-
-    }*/
-
-
-
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Expenses gasto = new Expenses();
+        String idg = request.getParameter("id_g");
+        String category = request.getParameter("category");
+        String amount = request.getParameter("amount");
+        String idusuari = request.getParameter("idusuari");
+
+        DBConnection.addexpense(idg,category,amount,idusuari);
+        request.setAttribute("gasto", gasto);
+        request.getRequestDispatcher("caca.jsp").forward(request,response);
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        DBConnection db = new DBConnection();
-        String id = request.getParameter("id");
-
-
+        this.doPost(request, response);
     }
+
 }

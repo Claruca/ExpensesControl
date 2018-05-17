@@ -23,7 +23,7 @@ public class OneUser extends HttpServlet {
         DBConnection db = new DBConnection();
         Users oneUsu = db.eachuser(idUsuari);
         request.setAttribute("oneUsu", oneUsu);
-        request.getRequestDispatcher("caca.jsp").forward(request,response);
+        request.getRequestDispatcher("oneUser.jsp").forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

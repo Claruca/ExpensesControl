@@ -30,8 +30,9 @@ public class AddExpense extends HttpServlet {
         String idusuari = request.getParameter("idusuari");
 
         DBConnection.addexpense(idg,category,amount,idusuari);
-        request.setAttribute("gasto", gasto);
-        request.getRequestDispatcher("caca.jsp").forward(request,response);
+//        request.setAttribute("gasto", gasto);
+        request.getRequestDispatcher("index.jsp").forward(request,response);
+
 
     }
 

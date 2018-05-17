@@ -87,17 +87,19 @@ public class DBConnection {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
-            while (rs.next()) {
+            if (rs.next()) {
                 usuari = new Users();
                 usuari.setId(rs.getString("ID"));
                 usuari.setName(rs.getString("NAME"));
                 usuari.setSurname(rs.getString("LASTNAME"));
                 usuari.setBalance(rs.getString("BALANCE"));
 
-                stmt.close();
-                con.close();
-
             }
+
+            stmt.close();
+            con.close();
+
+
         } catch (Exception e) {
             System.out.println((e.toString()));
         }
@@ -112,8 +114,8 @@ public class DBConnection {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
 
-            String addGasto = "INSERT INTO GASTOS (id_g,category,amount,iduser) VALUES('" + id + "','" + category + "','" + amount + "'," + idusuari + ")";
-            stmt.executeQuery(addGasto);
+            String addGasto = "INSERT INTO GASTOS (id_g,category,amount,iduser) VALUES(" + id + ",'" + category + "','" + amount + "'," + idusuari + ")";
+            stmt.executeUpdate(addGasto);
 //
             stmt.close();
             con.close();

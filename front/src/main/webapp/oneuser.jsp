@@ -30,12 +30,15 @@
                 "</div >" + "</div>" + "</div>");
     }
 
-   /* for(Expenses exp: oneUsu.getExpencount()){
+   for(Expenses exp: oneUsu.getExpencount()){
         out.println(exp.getId(), exp.getCategory(), exp.getAmount());
-    }*/
+    }
 
 %>
 
+<%
+
+%>
 
 
 

@@ -19,7 +19,7 @@
         <servlet-name>OneUser</servlet-name>
         <url-pattern>/unusuari/*</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>InsertData</servlet-name>
         <servlet-class>Show.InsertData</servlet-class>
@@ -36,6 +36,15 @@
 
     <servlet-mapping>
         <servlet-name>AddExpense</servlet-name>
-        <url-pattern>/add</url-pattern>
+        <url-pattern>/add/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>afegir</servlet-name>
+        <jsp-file>/addexpense.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>afegir</servlet-name>
+        <url-pattern>/add/addexpense</url-pattern>
     </servlet-mapping>
 </web-app>

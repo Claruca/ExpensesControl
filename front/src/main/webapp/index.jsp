@@ -144,7 +144,7 @@
 "                         <h3 class=\"card-text\">"+usu.getSurname()+"</h3>\n" +
 "                            <p>"+usu.getBalance()+"</p>\n" +
 "                            <a href=\"/add/addexpense\" class=\"btn btn-primary btn-outline-success\">Afegir Gasto</a>\n" +
-"                            <a href=\"/unusuari/?id="+usu.getId()+"\" class=\"btn btn-primary btn-outline-success\">Veure</a>\n" +
+"                            <a href=\"/unusuari/?idusu="+usu.getId()+"\" class=\"btn btn-primary btn-outline-success\">Veure</a>\n" +
 "                    </div>\n" +
 "                    <br>\n" +
 "                </div>");

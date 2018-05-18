@@ -47,4 +47,14 @@
         <servlet-name>afegir</servlet-name>
         <url-pattern>/add/addexpense</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>UnUsuari</servlet-name>
+        <jsp-file>/oneuser.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnUsuari</servlet-name>
+        <url-pattern>/oneuser</url-pattern>
+    </servlet-mapping>
 </web-app>

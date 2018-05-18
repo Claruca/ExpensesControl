@@ -19,16 +19,13 @@ public class OneUser extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String idUsuari = request.getParameter("id");
         DBConnection db = new DBConnection();
+
+        String idUsuari = request.getParameter("idusu");
+
         Users oneUsu = db.eachuser(idUsuari);
         request.setAttribute("oneUsu", oneUsu);
-        request.getRequestDispatcher("oneUser.jsp").forward(request,response);
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+        request.getRequestDispatcher("/oneuser").forward(request,response);
     }
 
 }

@@ -28,17 +28,15 @@
                 "<p>" + oneUsu.getSurname() + "</p>" +
                 "<p>" + oneUsu.getBalance() + "</p>" +
                 "</div >" + "</div>" + "</div>");
-    }
 
-   for(Expenses exp: oneUsu.getExpencount()){
-        out.println(exp.getId(), exp.getCategory(), exp.getAmount());
+
+        for (Expenses exp : oneUsu.getExpencount()) {
+            out.println("<p>"+ exp.getId() + "</p>");
+        }
     }
 
 %>
 
-<%
-
-%>
 
 
 

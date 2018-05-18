@@ -57,3 +57,5 @@ public class Expenses {
 
 
 //    Insert into gastos (id_g,category,amount,iduser) values (01,'cuina',1.6,1);
+
+//show columns from table

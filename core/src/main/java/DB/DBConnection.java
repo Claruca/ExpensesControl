@@ -112,8 +112,7 @@ public class DBConnection {
 
             stmt.close();
             con.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println((e.toString()));
         }
         return usuari;
@@ -138,6 +137,37 @@ public class DBConnection {
         }
     }
 
+
+    public static double total(String idusu) {
+
+        Double sumtotal = null;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+
+            String sql = "SELECT sum(amount) from gastos where iduser ='" + idusu + "'";
+
+            ResultSet rs =stmt.executeQuery(sql);
+
+            if(rs.next()){
+                sumtotal = rs.getDouble(1);
+
+            } else {
+                sumtotal = 0.0;
+            }
+
+            stmt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        return sumtotal;
+
+    }
 }
+
 
 //    Insert into gastos (id_g,category,amount,iduser) values (01,'cuina',1.6,1);

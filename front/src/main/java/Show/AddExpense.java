@@ -22,23 +22,23 @@ import java.sql.Statement;
 public class AddExpense extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        Expenses gasto = new Expenses();
-        String idg = request.getParameter("id_g");
-        String category = request.getParameter("category");
-        String amount = request.getParameter("amount");
-        String idusuari = request.getParameter("idusuari");
-
-        DBConnection.addexpense(idg,category,amount,idusuari);
-//        request.setAttribute("gasto", gasto);
-        request.getRequestDispatcher("index.jsp").forward(request,response);
-
+        this.doGet(request, response);
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        this.doPost(request, response);
+        String idg = request.getParameter("id_g");
+        String category = request.getParameter("category");
+        String amount = request.getParameter("amount");
+        String idusuari = request.getParameter("id");
+
+        DBConnection.addexpense(idg, category, amount, idusuari);
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
+
+
     }
 
 }
+
+

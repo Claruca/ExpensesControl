@@ -23,6 +23,7 @@ public class OneUser extends HttpServlet {
 
         String idUsuari = request.getParameter("idusu");
         Users oneUsu = db.eachuser(idUsuari);
+
         Double sumtotal = DBConnection.total(idUsuari);
         request.setAttribute("oneUsu", oneUsu);
         request.setAttribute("sumtotal",sumtotal);

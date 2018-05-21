@@ -36,16 +36,16 @@
 
     <servlet-mapping>
         <servlet-name>AddExpense</servlet-name>
-        <url-pattern>/add/*</url-pattern>
+        <url-pattern>/add</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>afegir</servlet-name>
-        <jsp-file>/addexpense.html</jsp-file>
+        <jsp-file>/addexpense.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>afegir</servlet-name>
-        <url-pattern>/add/addexpense</url-pattern>
+        <url-pattern>/afegir/*</url-pattern>
     </servlet-mapping>
 
 

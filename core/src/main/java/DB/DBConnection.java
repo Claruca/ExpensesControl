@@ -76,15 +76,16 @@ public class DBConnection {
         }
     }
 
-
+    /**
+     * Show all the info from the selected user
+     **/
     public Users eachuser(String id) {
-
         Users usuari = null;
         ArrayList<Expenses> ar = new ArrayList<Expenses>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
-            String sql = "SELECT * FROM Exemple ex JOIN gastos gas ON ex.id=gas.iduser WHERE ID ='" + id + "'";
+            String sql = "SELECT * FROM Exemple ex LEFT JOIN gastos gas ON ex.id=gas.iduser WHERE ID ='" + id + "'";
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -119,6 +120,9 @@ public class DBConnection {
 
     }
 
+    /**
+     * Add expense with the parametes from the form and the hidden iduser
+     **/
 
     public static void addexpense(String id, String category, String amount, String idusuari) {
         try {
@@ -137,6 +141,9 @@ public class DBConnection {
         }
     }
 
+    /**
+     * Amount's sum of each user
+     **/
 
     public static double total(String idusu) {
 
@@ -147,11 +154,11 @@ public class DBConnection {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
 
-            String sql = "SELECT sum(amount) from gastos where iduser ='" + idusu + "'";
+            String sql = "SELECT sum(amount) FROM gastos WHERE iduser ='" + idusu + "'";
 
-            ResultSet rs =stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery(sql);
 
-            if(rs.next()){
+            if (rs.next()) {
                 sumtotal = rs.getDouble(1);
 
             } else {
@@ -167,7 +174,33 @@ public class DBConnection {
         return sumtotal;
 
     }
+
+
+    public static double alltotal() {
+        Double alltotal = null;
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+
+            String sql = "SELECT sum(amount) FROM gastos";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next()){
+                alltotal = rs.getDouble(1);
+            } else {
+                alltotal = 0.0;
+            }
+
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        return alltotal;
+
+    }
+
 }
+
 
 
 //    Insert into gastos (id_g,category,amount,iduser) values (01,'cuina',1.6,1);

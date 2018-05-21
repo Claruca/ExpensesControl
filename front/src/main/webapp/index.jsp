@@ -34,7 +34,7 @@
     </ul>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top:80px;">
 
 
     <div class="row">
@@ -111,6 +111,15 @@
                         </a>
                     </li>
                 </ul>
+                <button type="button" class="btn btn-primary ml-3">Total <span class="badge badge-light">
+                                <%
+                                    Double total = DBConnection.alltotal();
+                                    out.println("<p>" + total + "&#8364;</p>");
+                                %>
+                </span>
+                    <span class="sr-only">total</span>
+                </button>
+
             </div>
         </nav>
 
@@ -130,15 +139,15 @@
             </div>
 
             <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
-            <div class="my-4 w-100 ml-sm-auto col-lg-9 px-4">
+            <div class="text-center">
                 <h2>Usuaris</h2>
                     <%
                        DBConnection db = new DBConnection();
                        List<Users> list = db.showUsers();
                        for (Users usu : list){
-                           out.println("<div class=\"card text-center d-inline-block\" style=\"width:200px\">\n" +
-"                    <img class=\"card-img-top\" src=\"https://www.w3schools.com/bootstrap4/img_avatar1.png\"\n" +
-"                         alt=\"Card image\" style=\"width:100%\">\n" +
+                           out.println("<div class=\"card text-center d-inline-block shadow p-4 mb-4 bg-white\" style=\"width:280px\">\n" +
+"                    <img class=\"card-img-top mt-3 rounded-circle\" src=\"https://www.w3schools.com/bootstrap4/img_avatar1.png\"\n" +
+"                         alt=\"Card image\" style=\"width:50%\">\n" +
 "                    <div class=\"card-body\">\n" +
 "                         <h3 class=\"card-text\">"+usu.getName()+"</h3>" +
 "                         <h3 class=\"card-text\">"+usu.getSurname()+"</h3>\n" +
@@ -149,13 +158,7 @@
 "                    <br>\n" +
 "                </div>");
 }%>
-
-
-                    <%
-                Double total= DBConnection.alltotal();
-                out.println("<p>" + total + "</p>");
-                    %>
-
+            </div>
         </main>
     </div>
 </div>

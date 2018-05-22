@@ -43,7 +43,6 @@
             <div class="input-group">
                 <%
                     Random rand = new Random();
-
                     int  n = rand.nextInt(50) + 1;
                 %>
                 <input class="form-control mr-sm-3" name="id_g" value="<%= n %>" type="text" placeholder="id de gasto"

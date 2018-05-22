@@ -34,7 +34,7 @@ public class AddExpense extends HttpServlet {
         String idusuari = request.getParameter("id");
 
         DBConnection.addexpense(idg, category, amount, idusuari);
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("unusuari").forward(request, response);
 
 
     }

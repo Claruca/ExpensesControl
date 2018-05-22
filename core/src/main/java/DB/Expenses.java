@@ -10,6 +10,7 @@ public class Expenses {
     private String idUsuari;
 
 
+
     public Expenses() {
     }
 
@@ -59,3 +60,5 @@ public class Expenses {
 //    Insert into gastos (id_g,category,amount,iduser) values (01,'cuina',1.6,1);
 
 //show columns from table
+
+//    create sequence seq_usuaris START WITH 20;

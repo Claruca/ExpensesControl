@@ -8,7 +8,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Tajawal:500" rel="stylesheet">
     <link href="/css/dashboard.css" rel="stylesheet" type="text/css">
     <link href="/css/usuaris.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Informació Usuari</title>
 </head>
 <body>
@@ -35,7 +37,6 @@
 <div class="container-fluid" style="margin-top:160px;">
 
 
-
     <%
         Users oneUsu = (Users) request.getAttribute("oneUsu");
         Double sumtotal = (Double) request.getAttribute("sumtotal");
@@ -50,22 +51,27 @@
                     "<p>" + oneUsu.getBalance() + "</p>"
             );
 
-            out.println("<table class=\"table\">" +
+            out.println("<table class=\"table table-hover\">" +
                     "<thead>\n" +
                     "    <tr>\n" +
                     "      <th scope=\"col\">ID</th>\n" +
                     "      <th scope=\"col\">Categoria</th>\n" +
                     "      <th scope=\"col\">Quantitat</th>\n" +
                     "    </tr>" +
-                    "</thead>" + "<tbody>\n");
+                    "</thead>" + "<tbody id=\"taula\">\n");
 
             for (Expenses exp : oneUsu.getExpencount()) {
                 out.println(
 
                         "<tr>" +
-                                "<th scope=\"row\">" + exp.getId() + "</th>" +
+                                "<th id=" + exp.getId() + "scope=\"row\">" + exp.getId() + "</th>" +
                                 "<td>" + exp.getCategory() + "</td>" +
-                                "<td>" + exp.getAmount() + "</td>");
+                                "<td>" + exp.getAmount() + "</td>" +
+                                "<td>" /*+
+                                "<form action=\"/delete\" method=\"get\">\n" +
+                                "<input  name=\"columnid\" type=\"hidden\" value=" + exp.getId() + ">" +
+                                "<button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Borrar</button>" + "</td>"*/
+                );
             }
 
             out.println("</tbody>" + "</table>");
@@ -74,10 +80,31 @@
         }
 
     %>
-</div>
 
 </div>
 
+</div>
 
 </body>
+<script>
+    //            $("#taula tr th").click(function (e) {
+    //                var x = value;
+    //    //            var x = $(this).click().value;
+    //                console.log($(x).html());
+    //            });
+    $(document).ready(function () {
+        $("#taula tr th").dblclick(function (e) {
+            var idtable = e.currentTarget.id;
+            $.get('DeleteData', {z: idtable}, function (responseText) {
+                $('#ajaxGetUserServletResponse').text(responseText);
+
+            });
+            console.log(idtable.valueOf());
+        });
+    });
+
+
+
+
+</script>
 </html>

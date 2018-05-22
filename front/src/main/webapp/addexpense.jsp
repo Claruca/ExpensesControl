@@ -8,6 +8,7 @@
 <%@ page import="DB.Users" %>
 <%@ page import="DB.DBConnection" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Random" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -34,21 +35,46 @@
     </ul>
 </nav>--%>
 
-<form class="form-inline my-2 my-md-0" method="get" action="/add">
-    <div class="input-group">
-        <input class="form-control mr-sm-3" name="id_g" type="text" placeholder="id_g"
-               aria-label="Id Despesa">
-        <input class="form-control mr-sm-3" name="category" type="text" placeholder="category"
-               aria-label="Categoria">
-        <input class="form-control mr-sm-3" name="amount" type="text" placeholder="amount"
-               aria-label="Quantitat">
 
-        <input type="hidden" name="id" value="<%= request.getParameter("id")%>">
-        <div class="input-group-btn">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Afegir gasto</button>
+<div class="container-fluid" style="margin-top:80px;">
+
+    <form  class="mx-auto" style="width: 500px;" method="get" action="/add">
+        <div class="form-group">
+            <div class="input-group">
+                <%
+                    Random rand = new Random();
+
+                    int  n = rand.nextInt(50) + 1;
+                %>
+                <input class="form-control mr-sm-3" name="id_g" value="<%= n %>" type="text" placeholder="id de gasto"
+                       aria-label="Id Despesa">
+            </div>
+            <%--<input class="form-control mr-sm-3" name="category" type="text" placeholder="category"--%>
+            <%--aria-label="Categoria">--%>
+            <div class="form-group">
+                <label for="category"></label>
+                <select class="form-control" name="category" id="category" aria-label="Categoria">
+                    <option>cuina</option>
+                    <option>banyo</option>
+                    <option>menjar</option>
+                    <option>drogueria</option>
+                    <option>altres</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input class="form-control mr-sm-3" name="amount" type="text" placeholder="amount"
+                       aria-label="Quantitat">
+                <input type="hidden" name="id" value="<%= request.getParameter("id")%>">
+                <div class="input-group-btn">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Afegir gasto</button>
+                </div>
+            </div>
+
+
         </div>
-    </div>
-</form>
+    </form>
+
+</div>
 </body>
 </html>
 

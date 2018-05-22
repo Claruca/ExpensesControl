@@ -30,6 +30,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>DeleteDate</servlet-name>
+        <servlet-class>Show.DeleteData</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteDate</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AddExpense</servlet-name>
         <servlet-class>Show.AddExpense</servlet-class>
     </servlet>
@@ -57,4 +66,5 @@
         <servlet-name>UnUsuari</servlet-name>
         <url-pattern>/oneuser</url-pattern>
     </servlet-mapping>
+
 </web-app>

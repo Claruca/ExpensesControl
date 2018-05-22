@@ -192,12 +192,37 @@ public class DBConnection {
                 alltotal = 0.0;
             }
 
+            stmt.close();
+            con.close();
+
         } catch (Exception e) {
             System.out.println("error");
         }
         return alltotal;
 
     }
+
+    public static void deleterow(String columnid) {
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+
+            String sql = "DELETE FROM gastos WHERE id_g='" + columnid + "'";
+            stmt.executeQuery(sql);
+
+
+            stmt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+
+    }
+
+
 
 }
 

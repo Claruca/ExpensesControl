@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Created by clara.marti on 22/05/2018.
@@ -22,7 +23,13 @@ public class DeleteData extends HttpServlet {
 
         String columntable = request.getParameter("columnid");
         DBConnection.deleterow(columntable);
-        request.getRequestDispatcher("unusuari").forward(request, response);
+
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        out.print("{\"succcess\": true}");
+        out.flush();
+
+        //request.getRequestDispatcher("unusuari").forward(request, response);
 
     }
 }

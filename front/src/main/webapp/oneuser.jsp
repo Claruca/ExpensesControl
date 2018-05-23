@@ -131,11 +131,14 @@
         $("#taula tr td button").click(function (e) {
             var idtable = e.currentTarget.id;
 
-            $.get('/delete', {columnid: idtable}, function (responseText) {
-                $('#ajaxGetUserServletResponse').text(responseText);
+            $.get('/delete', {columnid: idtable}, function (responseText){
+//                if (responseText.success) {
+//                    location.reload();
+//                } else {
+//                    alert("Ha petat");
+//                }
             });
 
-//            alert(idtable);
             console.log(idtable.valueOf());
 
         });

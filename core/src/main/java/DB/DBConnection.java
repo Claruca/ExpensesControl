@@ -210,7 +210,7 @@ public class DBConnection {
             Statement stmt = con.createStatement();
 
             String sql = "DELETE FROM gastos WHERE id_g='" + columnid + "'";
-            stmt.executeQuery(sql);
+            stmt.executeUpdate(sql);
 
 
             stmt.close();

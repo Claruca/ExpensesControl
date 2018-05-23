@@ -77,3 +77,12 @@ public class Users {
     }
 
 }
+/*
+
+    CREATE TABLE PUBLIC.EXEMPLE
+        (id VARCHAR(25) NOT NULL,
+        name VARCHAR(25),
+        lastname VARCHAR(25),
+        balance	VARCHAR(5),
+        PRIMARY KEY (id),
+        )*/

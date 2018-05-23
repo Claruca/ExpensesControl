@@ -22,7 +22,7 @@ public class DeleteData extends HttpServlet {
 
         String columntable = request.getParameter("columnid");
         DBConnection.deleterow(columntable);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("unusuari").forward(request, response);
 
     }
 }

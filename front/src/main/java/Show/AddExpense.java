@@ -22,11 +22,6 @@ import java.sql.Statement;
 public class AddExpense extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doGet(request, response);
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String idg = request.getParameter("id_g");
         String category = request.getParameter("category");
@@ -34,7 +29,14 @@ public class AddExpense extends HttpServlet {
         String idusuari = request.getParameter("id");
 
         DBConnection.addexpense(idg, category, amount, idusuari);
-        request.getRequestDispatcher("unusuari").forward(request, response);
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        this.doPost(request, response);
+
 
 
     }

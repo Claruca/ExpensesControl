@@ -8,8 +8,7 @@ public class Expenses {
     private String category;
     private String amount;
     private String idUsuari;
-
-
+    private String dating;
 
     public Expenses() {
     }
@@ -62,3 +61,5 @@ public class Expenses {
 //show columns from table
 
 //    create sequence seq_usuaris START WITH 20;
+
+//Insert timestamp en expense para ordenar por ultima fecha

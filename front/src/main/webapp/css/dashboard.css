@@ -63,18 +63,10 @@ body {
 }
 
 /*
- * Content
- */
-
-[role="main"] {
-    padding-top: 48px; /* Space for fixed navbar */
-}
-
-/*
  * Navbar
  */
 
-.navbar-brand {
+/*.navbar-brand {
     padding-top: .75rem;
     padding-bottom: .75rem;
     font-size: 1rem;
@@ -97,7 +89,7 @@ body {
 .form-control-dark:focus {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-}
+}*/
 
 /*
  * Utilities
@@ -115,7 +107,25 @@ body {
     background-color: #74468cf5 !important;
 }
 
-.imatge{
+.imatge {
     width: 70%;
     height: auto;
+}
+
+.titolPrin {
+    /*font-family: 'Architects Daughter', cursive;*/
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-bottom: 2rem;
+    color: #48496d;
+    font-size: 3rem;
+}
+
+p{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+}
+
+.titold{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2rem;
 }

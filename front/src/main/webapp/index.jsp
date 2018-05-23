@@ -24,14 +24,23 @@
     <title>Control de Despeses</title>
 </head>
 <body>
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.jsp">Control de Despeses</a>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
-        </li>
-    </ul>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="index.jsp">Control de Despeses</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/index.jsp">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
+        </form>
+    </div>
 </nav>
 
 <div class="container-fluid" style="margin-top:80px;">
@@ -125,7 +134,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Resum</h1>
+                <h1 class="h2">Selecciona un usuari:</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <button class="btn btn-sm btn-outline-secondary">Share</button>
@@ -140,24 +149,27 @@
 
             <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
             <div class="text-center">
-                <h2>Usuaris</h2>
                     <%
                        DBConnection db = new DBConnection();
                        List<Users> list = db.showUsers();
                        for (Users usu : list){
                            out.println("<div class=\"card text-center d-inline-block shadow p-4 mb-4 bg-white\" style=\"width:280px\">\n" +
-"                    <img class=\"card-img-top mt-3 rounded-circle\" src=\"https://www.w3schools.com/bootstrap4/img_avatar1.png\"\n" +
-"                         alt=\"Card image\" style=\"width:50%\">\n" +
-"                    <div class=\"card-body\">\n" +
-"                         <h3 class=\"card-text\">"+usu.getName()+"</h3>" +
-"                         <h3 class=\"card-text\">"+usu.getSurname()+"</h3>\n" +
-"                            <p>"+usu.getBalance()+"</p>\n" +
-"                            <a href=\"/afegir?id="+usu.getId()+"\" class=\"btn btn-primary btn-outline-success\">Afegir Gasto</a>\n" +
-"                            <a href=\"/unusuari/?idusu="+usu.getId()+"\" class=\"btn btn-primary btn-outline-success\">Veure</a>\n" +
+"                        <img class=\"card-img-top mt-3 rounded-circle\" src=\"https://www.w3schools.com/bootstrap4/img_avatar1.png\"\n" +
+"                           alt=\"Card image\" style=\"width:50%\">\n" +
+"                        <div class=\"card-body\">\n" +
+"                          <h3 class=\"card-text\">"+usu.getName()+"</h3>" +
+"                          <h3 class=\"card-text\">"+usu.getSurname()+"</h3>\n" +
+//"                            <a href=\"/afegir?id="+usu.getId()+"\" paramclass=\"btn btn-primary btn-outline-success\">Afegir Gasto</a>\n" +
+"                                  <form style=\"display:inline\" action=\"/afegir\" method=\"post\">\n" +
+"                                    <input  name=\"id\" type=\"hidden\" value=" + usu.getId() + ">" +
+                                     "<button class=\"btn btn-primary btn-outline-success\" type=submit>Afegir gasto</button>"+
+                                   "</form>" +
+"                                   <a href=\"/unusuari/?idusu="+usu.getId()+"\" class=\"btn btn-primary btn-outline-success\">Veure</a>\n" +
 "                    </div>\n" +
 "                    <br>\n" +
-"                </div>");
+"                        </div>");
 }%>
+
             </div>
         </main>
     </div>

@@ -222,6 +222,36 @@ public class DBConnection {
 
     }
 
+    public ArrayList<Expenses> forcategory (String category){
+
+        ArrayList<Expenses> forcat = new ArrayList<Expenses>();
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+
+            String sql = "SELECT category,amount, ex.name FROM GASTOS ga JOIN Exemple ex on ga.iduser = ex.id where category ='" + category + "'";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                Expenses gastotipo = new Expenses();
+                gastotipo.setCategory(rs.getString("category"));
+                gastotipo.setAmount(rs.getString("amount"));
+                //Aqui hauria de ser s'id, pero li pos es nom, amem si cuela
+                gastotipo.setIdUsuari(rs.getString("ex.name"));
+
+                forcat.add(gastotipo);
+            }
+
+            stmt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        return forcat;
+    }
 
 
 }

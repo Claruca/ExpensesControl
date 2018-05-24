@@ -26,7 +26,7 @@ public class DeleteData extends HttpServlet {
 
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        out.print("{\"succcess\": true}");
+        out.print("{\"success\": true}");
         out.flush();
 
         //request.getRequestDispatcher("unusuari").forward(request, response);

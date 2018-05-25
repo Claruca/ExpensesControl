@@ -67,4 +67,26 @@
         <url-pattern>/oneuser</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>Classified</servlet-name>
+        <servlet-class>Show.Classified</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Classified</servlet-name>
+        <url-pattern>/type</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>totalcategory</servlet-name>
+        <jsp-file>/totalcategory.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>totalcategory</servlet-name>
+        <url-pattern>/tipo</url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>

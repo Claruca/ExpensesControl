@@ -57,10 +57,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Compres
-                        </a>
+                        <form method="post" action="type">
+                            <label for="cat"></label>
+                            <select class="form-control" name="cat" id="cat">
+                                <option>cuina</option>
+                                <option>banyo</option>
+                                <option>menjar</option>
+                                <option>drogueria</option>
+                                <option>altres</option>
+                            </select>
+                            <button type="submit"><span data-feather="bar-chart-2"></span>Filtrar</button>
+                        </form>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
@@ -149,26 +157,26 @@
 
             <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
             <div class="text-center">
-                    <%
-                       DBConnection db = new DBConnection();
-                       List<Users> list = db.showUsers();
-                       for (Users usu : list){
-                           out.println("<div class=\"card text-center d-inline-block shadow p-4 mb-4 bg-white\" style=\"width:280px\">\n" +
-"                        <img class=\"card-img-top mt-3 rounded-circle\" src=\"https://www.w3schools.com/bootstrap4/img_avatar1.png\"\n" +
-"                           alt=\"Card image\" style=\"width:50%\">\n" +
-"                        <div class=\"card-body\">\n" +
-"                          <h3 class=\"card-text\">"+usu.getName()+"</h3>" +
-"                          <h3 class=\"card-text\">"+usu.getSurname()+"</h3>\n" +
+                <%
+                    DBConnection db = new DBConnection();
+                    List<Users> list = db.showUsers();
+                    for (Users usu : list) {
+                        out.println("<div class=\"card text-center d-inline-block shadow p-4 mb-4 bg-white\" style=\"width:280px\">\n" +
+                                "                        <img class=\"card-img-top mt-3 rounded-circle\" src=\"https://www.w3schools.com/bootstrap4/img_avatar1.png\"\n" +
+                                "                           alt=\"Card image\" style=\"width:50%\">\n" +
+                                "                        <div class=\"card-body\">\n" +
+                                "                          <h3 class=\"card-text\">" + usu.getName() + "</h3>" +
+                                "                          <h3 class=\"card-text\">" + usu.getSurname() + "</h3>\n" +
 //"                            <a href=\"/afegir?id="+usu.getId()+"\" paramclass=\"btn btn-primary btn-outline-success\">Afegir Gasto</a>\n" +
-"                                  <form style=\"display:inline\" action=\"/afegir\" method=\"post\">\n" +
-"                                    <input  name=\"id\" type=\"hidden\" value=" + usu.getId() + ">" +
-                                     "<button class=\"btn btn-primary btn-outline-success\" type=submit>Afegir gasto</button>"+
-                                   "</form>" +
-"                                   <a href=\"/unusuari/?idusu="+usu.getId()+"\" class=\"btn btn-primary btn-outline-success\">Veure</a>\n" +
-"                    </div>\n" +
-"                    <br>\n" +
-"                        </div>");
-}%>
+                                "                                  <form style=\"display:inline\" action=\"/afegir\" method=\"post\">\n" +
+                                "                                    <input  name=\"id\" type=\"hidden\" value=" + usu.getId() + ">" +
+                                "<button class=\"btn btn-primary btn-outline-success\" type=submit>Afegir gasto</button>" +
+                                "</form>" +
+                                "                                   <a href=\"/unusuari/?idusu=" + usu.getId() + "\" class=\"btn btn-primary btn-outline-success\">Veure</a>\n" +
+                                "                    </div>\n" +
+                                "                    <br>\n" +
+                                "                        </div>");
+                    }%>
 
             </div>
         </main>

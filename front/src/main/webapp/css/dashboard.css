@@ -27,7 +27,7 @@ body {
     top: 0;
     height: calc(100vh - 48px);
     padding-top: .5rem;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
 
@@ -125,7 +125,12 @@ p{
     font-size: 1rem;
 }
 
+.jumbotron {
+    background-color: #b67cd491;
+}
+
 .titold{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 2rem;
 }
+

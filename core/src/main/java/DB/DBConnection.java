@@ -147,7 +147,7 @@ public class DBConnection {
 
     public static double total(String idusu) {
 
-        Double sumtotal = null;
+        Double sumtotal = 0.0;
 
         try {
             Class.forName(JDBC_DRIVER);
@@ -177,7 +177,7 @@ public class DBConnection {
 
 
     public static double alltotal() {
-        Double alltotal = null;
+        Double alltotal = 0.0;
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -230,7 +230,7 @@ public class DBConnection {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
 
-            String sql = "SELECT category,amount, ex.name FROM GASTOS ga JOIN Exemple ex on ga.iduser = ex.id where category ='" + category + "'";
+            String sql = "SELECT category,amount, ex.name FROM GASTOS ga JOIN Exemple ex ON ga.iduser = ex.id WHERE category ='" + category + "'";
 
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -239,7 +239,7 @@ public class DBConnection {
                 gastotipo.setCategory(rs.getString("category"));
                 gastotipo.setAmount(rs.getString("amount"));
                 //Aqui hauria de ser s'id, pero li pos es nom, amem si cuela
-                gastotipo.setIdUsuari(rs.getString("ex.name"));
+                gastotipo.setIdUsuari(rs.getString("name"));
 
                 forcat.add(gastotipo);
             }

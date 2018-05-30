@@ -203,7 +203,7 @@
 
 <script>
     function myFunction() {
-        window.open("/oneuser");
+        window.open("/insert");
     }
 </script>
 

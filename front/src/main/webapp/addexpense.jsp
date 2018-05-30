@@ -53,7 +53,7 @@
 
     <div class="jumbotron" style="min-width: 500px;">
 
-        <form class="mx-auto" style="width: 450px;" method="post" action="/add">
+        <form class="mx-auto" style="width: 400px;" method="post" action="/add">
             <div class="form-group">
                 <div class="input-group p-3">
                     <%

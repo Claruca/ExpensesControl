@@ -186,7 +186,7 @@ public class DBConnection {
             String sql = "SELECT sum(amount) FROM gastos";
             ResultSet rs = stmt.executeQuery(sql);
 
-            if(rs.next()){
+            if (rs.next()) {
                 alltotal = rs.getDouble(1);
             } else {
                 alltotal = 0.0;
@@ -222,7 +222,7 @@ public class DBConnection {
 
     }
 
-    public ArrayList<Expenses> forcategory (String category){
+    public ArrayList<Expenses> forcategory(String category) {
 
         ArrayList<Expenses> forcat = new ArrayList<Expenses>();
         try {
@@ -234,7 +234,7 @@ public class DBConnection {
 
             ResultSet rs = stmt.executeQuery(sql);
 
-            while(rs.next()){
+            while (rs.next()) {
                 Expenses gastotipo = new Expenses();
                 gastotipo.setCategory(rs.getString("category"));
                 gastotipo.setAmount(rs.getString("amount"));
@@ -254,8 +254,47 @@ public class DBConnection {
     }
 
 
+    public Integer sumusuaris() {
+        Integer sumusu = 0;
+
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+
+            String sql = "SELECT count(id) FROM exemple";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                sumusu = rs.getInt(1);
+
+            }
+
+
+            stmt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        return sumusu;
+    }
+
+
 }
 
+//TOTAL/nº usuaris
+//TOTAL - total cada usuari
+
+
+//a = 20
+//        b= 30
+//        c= 10
+//        TOTAL = 60/3 = 20
+//
+//        20 -20 = 0
+//        30 - 20 = 10
+//        10 - 20 = -10
 
 
 //    Insert into gastos (id_g,category,amount,iduser) values (01,'cuina',1.6,1);

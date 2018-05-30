@@ -1,6 +1,7 @@
 <%@ page import="DB.Users" %>
 <%@ page import="DB.Expenses" %>
-<%@ page import="DB.DBConnection" %><%--
+<%@ page import="DB.DBConnection" %>
+<%@ page import="java.text.DecimalFormat" %><%--
   Created by IntelliJ IDEA.
   User: clara.marti
   Date: 16/05/2018
@@ -92,8 +93,7 @@
 //                                "<form action=\"/delete\" method=\"get\">\n" +
 //                                "<input  name=\"columnid\" type=\"hidden\" value=" + exp.getId() + ">" +
                     );
-                }
-                else{
+                } else {
                     out.println("<tr>" +
                             "<th>-</th>" +
                             "<td>-</td>" +
@@ -104,9 +104,26 @@
 
             out.println("</tbody>" + "</table>");
             out.println("<h5 class=\"titold\">Total despeses:" + sumtotal + "&euro;</h5>");
-            out.println("</div>");
+
         }
     %>
+
+    <%
+        Double totalusuaris = DBConnection.alltotal(); //Suma de tothom
+
+        DBConnection db = new DBConnection();       //Recompte usuaris
+        Integer sum = db.sumusuaris();
+
+        Double each = totalusuaris/sum;          //lo que ha de pagar cada un
+
+        Double recompte = each - sumtotal;   //Lo que ha de pagar menos lo que ha pagat
+
+        DecimalFormat df2 = new DecimalFormat("0.##");       //Passa a 2 decimals
+        out.println("<h5 class=\"titold\">Total a pagar:"+ df2.format(recompte) + "&euro;</h5>");
+        out.println("</div>");
+
+    %>
+
     <%
         if (oneUsu != null) {
             out.println("<form class=\"text-center\" action=\"/afegir\" method=\"post\">" +
@@ -116,7 +133,6 @@
 
         }
     %>
-
 
 </div>
 
@@ -135,8 +151,9 @@
         $("#taula tr td button").click(function (e) {
             var idtable = e.currentTarget.id;
 
-            $.get('/delete', {columnid: idtable}, function (responseText){
+            $.get('/delete', {columnid: idtable}, function (responseText) {
                 if (responseText.success) {
+                    alert("CUIDADO: Has borrat una entrada");
                     location.reload();
                 } else {
                     alert("Ha petat");

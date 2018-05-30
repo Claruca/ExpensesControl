@@ -71,9 +71,9 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="#" onclick="myFunction()">
                             <span data-feather="shopping-cart"></span>
-                            Afegir enlloc
+                            Afegir categoria
                         </a>
                     </li>
                     <li class="nav-item">
@@ -199,6 +199,12 @@
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 <script>
     feather.replace()
+</script>
+
+<script>
+    function myFunction() {
+        window.open("/oneuser");
+    }
 </script>
 
 <!-- Graphs -->

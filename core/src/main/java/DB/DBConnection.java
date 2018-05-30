@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Date;
 
 
 /**
@@ -129,8 +130,12 @@ public class DBConnection {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
+            Date date = new Date();
 
-            String addGasto = "INSERT INTO GASTOS (id_g,category,amount,iduser) VALUES(" + id + ",'" + category + "','" + amount + "'," + idusuari + ")";
+//            TODO: modificar date a sa bd
+
+            String addGasto = "INSERT INTO GASTOS (id_g,category,amount,iduser, date ) VALUES" +
+                    "(" + id + ",'" + category + "','" + amount + "'," + idusuari + ",'" + date.toString() + "')";
             stmt.executeUpdate(addGasto);
 //
             stmt.close();
@@ -270,7 +275,6 @@ public class DBConnection {
 
             }
 
-
             stmt.close();
             con.close();
 
@@ -279,8 +283,6 @@ public class DBConnection {
         }
         return sumusu;
     }
-
-
 }
 
 //TOTAL/nº usuaris

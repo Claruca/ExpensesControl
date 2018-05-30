@@ -114,12 +114,20 @@
         DBConnection db = new DBConnection();       //Recompte usuaris
         Integer sum = db.sumusuaris();
 
-        Double each = totalusuaris/sum;          //lo que ha de pagar cada un
+        Double each = totalusuaris / sum;          //lo que ha de pagar cada un
 
         Double recompte = each - sumtotal;   //Lo que ha de pagar menos lo que ha pagat
 
         DecimalFormat df2 = new DecimalFormat("0.##");       //Passa a 2 decimals
-        out.println("<h5 class=\"titold\">Total a pagar:"+ df2.format(recompte) + "&euro;</h5>");
+
+        if (recompte < 0) {
+            Double positiu = recompte * -1;
+            out.println("<h5 class=\"titold\">Han de tornar-te:" + df2.format(positiu) + "&euro;</h5>");
+        } else {
+            out.println("<h5 class=\"titold\">Total a pagar:" + df2.format(recompte) + "&euro;</h5>");
+
+        }
+
         out.println("</div>");
 
     %>

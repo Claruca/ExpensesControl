@@ -88,5 +88,16 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>addcategory</servlet-name>
+        <jsp-file>/addcategory.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>addcategory</servlet-name>
+        <url-pattern>/newcategory</url-pattern>
+    </servlet-mapping>
+
+
 
 </web-app>

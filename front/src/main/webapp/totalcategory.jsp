@@ -43,9 +43,10 @@
 
 <div class="container-fluid" style="margin-top:160px;">
 
-    <div class="jumbotron">
+    <div class="jumbotron mx-auto w-50" style="min-width: 350px;">
         <%
             ArrayList<Expenses> at = (ArrayList<Expenses>) request.getAttribute("llista");
+            Double totalcat = (Double) request.getAttribute("cattotal");
 
 
             out.println("<table class=\"table table-hover w-50 text-center mx-auto \">" +
@@ -54,6 +55,7 @@
                     "      <th scope=\"col\">Nom</th>\n" +
                     "      <th scope=\"col\">Categoria</th>\n" +
                     "      <th scope=\"col\">Quantitat</th>\n" +
+                    "      <th scope=\"col\">Data</th>\n" +
                     "    </tr>" +
                     "</thead>" + "<tbody id=\"taula\">\n");
 
@@ -61,19 +63,27 @@
                 out.println("<tr>" +
                         "<th>" + exp.getIdUsuari() + "</th>" +
                         "<td>" + exp.getCategory() + "</td>" +
-                        "<td>" + exp.getAmount() + "</td>"
+                        "<td>" + exp.getAmount() + "</td>" +
+                        "<td>" + exp.getDating() + "</td>"
 
                 );
             }
 
             out.println("</tbody>" + "</table>");
-
+            out.println("<h3 class=\"text-center\">Total: " + totalcat + "</h3>");
 
         %>
+        <%--<button class="btn btn-primary btn-outline-success" type="submit">Afegir gasto</button>--%>
+        <div class="d-flex justify-content-end w-100">
+        <input class=" btn btn-primary btn-outline-success" type=button onClick="parent.location='/index.jsp'"
+               value='Back'>
+        </div>
 
 
     </div>
 </div>
+
+
 
 </body>
 </html>

@@ -97,6 +97,17 @@
         <servlet-name>addcategory</servlet-name>
         <url-pattern>/newcategory</url-pattern>
     </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>SelectPlace</servlet-name>
+        <servlet-class>Show.SelectPlace</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SelectPlace</servlet-name>
+        <url-pattern>/place/*</url-pattern>
+    </servlet-mapping>
 
 
 

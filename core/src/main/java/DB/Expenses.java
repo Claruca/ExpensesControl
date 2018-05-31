@@ -29,8 +29,17 @@ public class Expenses {
         this.category = category;
     }
 
+    public String getDating() {
+        return dating;
+    }
+
+    public void setDating(String dating) {
+        this.dating = dating;
+    }
+
     public String getAmount() {
         return amount;
+
     }
 
     public void setAmount(String amount) {
@@ -56,15 +65,23 @@ public class Expenses {
         FOREIGN KEY (iduser) REFERENCES EXEMPLE(ID))*/
 
 
-//    ALTER TABLE gastos ADD COLUMN date SET DEFAULT CURRENT_TIMESTAMP
+    /*CREATE TABLE PUBLIC.PIS
+        (id_p INTEGER NOT NULL,
+         nom VARCHAR(25),
+         PRIMARY KEY (id_p))
+  */
 
 
-//    Insert into gastos (id_g,category,amount,iduser) values (01,'cuina',1.6,1);
+//    ALTER TABLE gastos ADD COLUMN dia Varchar(50);
 
-//show columns from table
+//    INSERT INTO gastos (id_g,category,amount,iduser) VALUES (01,'cuina',1.6,1);
 
-// create sequence seq_usuaris START WITH 20;
+//    show columns from table
 
-//Insert timestamp en expense para ordenar por ultima fecha
+/*
+    ALTER TABLE exemple ADD COLUMN id_pis integer
 
-// SELECT category,amount, name FROM GASTOS ga JOIN Exemple ex on ga.iduser = ex.id where category = 'cuina'
+    ALTER TABLE exemple ADD FOREIGN KEY (id_pis) REFERENCES pis (id_p)
+
+    UPDATE exemple SET id_pis=1 WHERE id=2
+    */

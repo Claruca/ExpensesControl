@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -29,6 +30,12 @@ public class AddExpense extends HttpServlet {
         String idusuari = request.getParameter("id");
 
         DBConnection.addexpense(idg, category, amount, idusuari);
+
+        /*response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        out.print("{\"correct\": true}");
+        out.flush();*/
+
         request.getRequestDispatcher("/index.jsp").forward(request, response);
 
     }

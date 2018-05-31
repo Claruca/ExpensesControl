@@ -22,6 +22,7 @@
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Afegir despesa</title>
 </head>
 
@@ -90,6 +91,23 @@
         </form>
     </div>
 </div>
+
+<%--<script>
+    $(document).ready(function () {
+        $.post('/add', function (responseText) {
+            if (responseText.correct) {
+                alert("va be");
+                location.replace("/unusuari")
+            } else {
+                alert("Peta");
+            }
+        });
+    });
+
+
+</script>--%>
+
+
 </body>
 </html>
 

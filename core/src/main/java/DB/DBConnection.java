@@ -2,13 +2,16 @@ package DB;
 
 import com.sun.rmi.rmid.ExecPermission;
 import jdk.nashorn.internal.scripts.JD;
+import org.apache.commons.lang3.time.DateUtils;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Date;
 
@@ -24,14 +27,15 @@ public class DBConnection {
     static final String PASS = "system";
 
 
-    public List<Users> showUsers() {
+//    Passar a nes servlet per triar casa
+    public List<Users> showUsers(String selectplace) {
         ArrayList<Users> llistaUsuaris = new ArrayList<Users>();
 
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
-            String sql = "SELECT * FROM Exemple;";
+            String sql = "SELECT * FROM Exemple Where id_pis ='" + selectplace + "'";
 
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -56,6 +60,38 @@ public class DBConnection {
         return llistaUsuaris;
 
     }
+
+
+    public List<Place> flats() {
+        ArrayList<Place> pisos = new ArrayList<Place>();
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM Pis;";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+
+            while (rs.next()) {
+                Place pis = new Place();
+                pis.setPlaceid(rs.getInt(1));
+                pis.setPlacename(rs.getString("NOM"));
+
+                pisos.add(pis);
+            }
+
+            stmt.close();
+            con.close();
+
+
+        } catch (Exception e) {
+            System.out.println((e.toString()));
+        }
+
+        return pisos;
+    }
+
 
     public static void addUser(String id, String name, String surname, String balance) {
 
@@ -105,6 +141,7 @@ public class DBConnection {
                 exp.setCategory(rs.getString("CATEGORY"));
                 exp.setAmount(rs.getString("AMOUNT"));
                 exp.setIdUsuari(rs.getString("IDUSER"));
+                exp.setDating(rs.getString("DIA"));
 
                 ar.add(exp);
 
@@ -130,12 +167,12 @@ public class DBConnection {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
-            Date date = new Date();
+//            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+            String date = sdf.format(new Date());
 
-//            TODO: modificar date a sa bd
-
-            String addGasto = "INSERT INTO GASTOS (id_g,category,amount,iduser, date ) VALUES" +
-                    "(" + id + ",'" + category + "','" + amount + "'," + idusuari + ",'" + date.toString() + "')";
+            String addGasto = "INSERT INTO GASTOS (id_g,category,amount,iduser, dia) VALUES" +
+                    "(" + id + ",'" + category + "','" + amount + "','" + idusuari + "','" + date + "')";
             stmt.executeUpdate(addGasto);
 //
             stmt.close();
@@ -227,6 +264,10 @@ public class DBConnection {
 
     }
 
+    /**
+     * Classified by category     *
+     */
+
     public ArrayList<Expenses> forcategory(String category) {
 
         ArrayList<Expenses> forcat = new ArrayList<Expenses>();
@@ -235,7 +276,7 @@ public class DBConnection {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
 
-            String sql = "SELECT category,amount, ex.name FROM GASTOS ga JOIN Exemple ex ON ga.iduser = ex.id WHERE category ='" + category + "'";
+            String sql = "SELECT category,amount, ex.name, dia FROM GASTOS ga JOIN Exemple ex ON ga.iduser = ex.id WHERE category ='" + category + "'";
 
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -243,8 +284,9 @@ public class DBConnection {
                 Expenses gastotipo = new Expenses();
                 gastotipo.setCategory(rs.getString("category"));
                 gastotipo.setAmount(rs.getString("amount"));
-                //Aqui hauria de ser s'id, pero li pos es nom, amem si cuela
+                //Aqui hauria de ser s'id, pero li pos es nom, amem si cuela: Ha colat
                 gastotipo.setIdUsuari(rs.getString("name"));
+                gastotipo.setDating(rs.getString("dia"));
 
                 forcat.add(gastotipo);
             }
@@ -283,6 +325,35 @@ public class DBConnection {
         }
         return sumusu;
     }
+
+
+    public static double totalcategory(String category) {
+        Double totalcat = 0.0;
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+
+            String sql = "SELECT sum(amount) FROM gastos WHERE category ='" + category + "'";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                totalcat = rs.getDouble(1);
+            } else {
+                totalcat = 0.0;
+            }
+
+            stmt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        return totalcat;
+
+    }
+
+
 }
 
 //TOTAL/nº usuaris

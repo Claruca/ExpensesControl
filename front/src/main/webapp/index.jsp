@@ -1,6 +1,7 @@
 <%@ page import="DB.Users" %>
 <%@ page import="DB.DBConnection" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="DB.Place" %><%--
   Created by IntelliJ IDEA.
   User: clara.marti
   Date: 08/05/2018
@@ -128,7 +129,7 @@
                         </a>
                     </li>
                 </ul>
-                <button type="button" class="btn btn-primary ml-3">Total <span class="badge badge-light">
+                <button type="button" disabled class="btn btn-primary ml-3">Total <span class="badge badge-light">
                                 <%
                                     Double total = DBConnection.alltotal();
                                     out.println("<p>" + total + "&#8364;</p>");
@@ -142,24 +143,30 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Selecciona un usuari:</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group mr-2">
-                        <button class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button class="btn btn-sm btn-outline-secondary">Export</button>
-                    </div>
-                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <span data-feather="calendar"></span>
-                        This week
-                    </button>
-                </div>
+                <h1 class="h2">Selecciona un pis:</h1>
+                <%
+                    DBConnection connect = new DBConnection();
+                    List<Place> pisos = connect.flats();
+                    for (Place pis : pisos) {
+                        out.println("<div class=\"card text-center d-inline-block shadow p-4 mb-4 bg-white\" style=\"width:100px\">" +
+                                "<div class=\"card-body\">" +
+                                "<h3 class=\"card-text\">" + pis.getPlacename() + "</h3>" +
+                                "<a href=\"/place/?idpis"+ pis.getPlaceid() + "class=\"btn btn-primary btn-outline-success\">Tria</a>"+
+                                "</div></div>"
+                        );
+                    }
+                %>
+
             </div>
 
             <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
             <div class="text-center">
                 <%
-                    DBConnection db = new DBConnection();
-                    List<Users> list = db.showUsers();
+//                    DBConnection db = new DBConnection();
+
+                    //afegir if
+
+                    List<Users> list = (List<Users>) request.getAttribute("list");
                     for (Users usu : list) {
                         out.println("<div class=\"card text-center d-inline-block shadow p-4 mb-4 bg-white\" style=\"width:280px\">\n" +
                                 "                        <img class=\"card-img-top mt-3 rounded-circle\" src=\"https://www.w3schools.com/bootstrap4/img_avatar1.png\"\n" +
@@ -170,12 +177,12 @@
 //"                            <a href=\"/afegir?id="+usu.getId()+"\" paramclass=\"btn btn-primary btn-outline-success\">Afegir Gasto</a>\n" +
                                 "                                  <form style=\"display:inline\" action=\"/afegir\" method=\"post\">\n" +
                                 "                                    <input  name=\"id\" type=\"hidden\" value=" + usu.getId() + ">" +
-                                "<button class=\"btn btn-primary btn-outline-success\" type=submit>Afegir gasto</button>" +
-                                "</form>" +
+                                "                                       <button class=\"btn btn-primary btn-outline-success\" type=submit>Afegir gasto</button>" +
+                                "                                   </form>" +
                                 "                                   <a href=\"/unusuari/?idusu=" + usu.getId() + "\" class=\"btn btn-primary btn-outline-success\">Veure</a>\n" +
-                                "                    </div>\n" +
-                                "                    <br>\n" +
-                                "                        </div>");
+                                "                         </div>\n" +
+                                "<br>\n" +
+                                "</div>");
                     }%>
 
             </div>
@@ -203,7 +210,7 @@
 
 <script>
     function myFunction() {
-        var myWindow = window.open("/newcategory", "_blank","toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+        var myWindow = window.open("/newcategory", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
     }
 </script>
 

@@ -65,11 +65,7 @@ public class Expenses {
         FOREIGN KEY (iduser) REFERENCES EXEMPLE(ID))*/
 
 
-    /*CREATE TABLE PUBLIC.PIS
-        (id_p INTEGER NOT NULL,
-         nom VARCHAR(25),
-         PRIMARY KEY (id_p))
-  */
+
 
 
 //    ALTER TABLE gastos ADD COLUMN dia Varchar(50);

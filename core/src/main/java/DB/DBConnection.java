@@ -27,16 +27,22 @@ public class DBConnection {
     static final String PASS = "system";
 
 
-//    Passar a nes servlet per triar casa
     public List<Users> showUsers(String selectplace) {
         ArrayList<Users> llistaUsuaris = new ArrayList<Users>();
 
         try {
+
+            String sql;
+            if (selectplace == null) {
+                sql = "SELECT * FROM Exemple";
+
+            } else {
+                sql = "SELECT * FROM Exemple Where id_pis ='" + selectplace + "'";
+            }
+
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
-            String sql = "SELECT * FROM Exemple Where id_pis ='" + selectplace + "'";
-
             ResultSet rs = stmt.executeQuery(sql);
 
 
@@ -49,6 +55,7 @@ public class DBConnection {
 
                 llistaUsuaris.add(usu);
             }
+
 
             stmt.close();
             con.close();

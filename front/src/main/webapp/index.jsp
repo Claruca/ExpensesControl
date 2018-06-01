@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
 
     <title>Control de Despeses</title>
 </head>
@@ -142,16 +142,22 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <div>
                 <h1 class="h2">Selecciona un pis:</h1>
+            </div>
+            <div class="d-flex justify-content-right flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <%
                     DBConnection connect = new DBConnection();
                     List<Place> pisos = connect.flats();
                     for (Place pis : pisos) {
-                        out.println("<div class=\"card text-center d-inline-block shadow p-4 mb-4 bg-white\" style=\"width:100px\">" +
+                        out.println("<div class=\" d-inline-flex card text-center shadow p-2 m-2 mb-4 bg-white\" style=\"width:200px; min-width:200px;\">" +
                                 "<div class=\"card-body\">" +
                                 "<h3 class=\"card-text\">" + pis.getPlacename() + "</h3>" +
-                                "<a href=\"/place/?idpis"+ pis.getPlaceid() + "class=\"btn btn-primary btn-outline-success\">Tria</a>"+
+                                "<form action=\"/place\" method=\"post\">" +
+                                    "<input  name=\"idpis\" type=\"hidden\" value=" + pis.getPlaceid() + ">" +
+                                    "<button class=\"btn btn-primary btn-outline-success\" type=submit>Afegir gasto</button>" +
+                                "</form>" +
+//                                "<a class=\"btn btn-primary btn-outline-success\" href=\" /place/?idpis=" + pis.getPlaceid() + "\" >Tria</a>" +
                                 "</div></div>"
                         );
                     }
@@ -160,15 +166,22 @@
             </div>
 
             <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
-            <div class="text-center">
+
+            <div>
+                <h1 class="h2">Usuaris:</h1>
+            </div>
+            <div class="text-center d-flex justify-content-right flex-wrap flex-md-nowrap align-items-center border-bottom">
+
+
                 <%
-//                    DBConnection db = new DBConnection();
+                    //                    DBConnection db = new DBConnection();
+//                    List<Users> lista = (List<Users>) request.getAttribute("list");
 
-                    //afegir if
-
-                    List<Users> list = (List<Users>) request.getAttribute("list");
-                    for (Users usu : list) {
-                        out.println("<div class=\"card text-center d-inline-block shadow p-4 mb-4 bg-white\" style=\"width:280px\">\n" +
+//                    String idpis = (String) request.getAttribute("idpis");
+                    DBConnection db = new DBConnection();
+                    List<Users> lista = db.showUsers(request.getParameter("idpis"));
+                    for (Users usu : lista) {
+                        out.println("<div class=\"card text-center d-inline-block shadow p-4 m-2 mb-3 bg-white\" style=\"width:280px; min-width:280px;\">\n" +
                                 "                        <img class=\"card-img-top mt-3 rounded-circle\" src=\"https://www.w3schools.com/bootstrap4/img_avatar1.png\"\n" +
                                 "                           alt=\"Card image\" style=\"width:50%\">\n" +
                                 "                        <div class=\"card-body\">\n" +
@@ -179,11 +192,13 @@
                                 "                                    <input  name=\"id\" type=\"hidden\" value=" + usu.getId() + ">" +
                                 "                                       <button class=\"btn btn-primary btn-outline-success\" type=submit>Afegir gasto</button>" +
                                 "                                   </form>" +
-                                "                                   <a href=\"/unusuari/?idusu=" + usu.getId() + "\" class=\"btn btn-primary btn-outline-success\">Veure</a>\n" +
+                                "                                   <a class=\"btn btn-primary btn-outline-success\" href=\" /unusuari/?idusu=" + usu.getId() + "\">Veure</a>\n" +
                                 "                         </div>\n" +
                                 "<br>\n" +
                                 "</div>");
-                    }%>
+
+                    }
+                %>
 
             </div>
         </main>

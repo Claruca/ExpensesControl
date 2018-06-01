@@ -31,3 +31,18 @@ public class Place {
     public Place() {
     }
 }
+
+
+/*CREATE TABLE PUBLIC.PIS
+        (id_p INTEGER NOT NULL,
+         nom VARCHAR(25),
+         PRIMARY KEY (id_p))
+  */
+
+//    INSERT INTO pis (id_p,nom) VALUES (2, 'Es Secar');
+
+
+    /*SELECT category,amount, ex.name, dia, p.nom FROM Exemple ex
+        JOIN Gastos ga ON ga.iduser = ex.id
+        JOIN Pis p ON p.id_p = ex.id_pis
+        WHERE category = 'cuina' AND  ex.id_pis=2*/

@@ -106,7 +106,7 @@
     
     <servlet-mapping>
         <servlet-name>SelectPlace</servlet-name>
-        <url-pattern>/place/*</url-pattern>
+        <url-pattern>/place</url-pattern>
     </servlet-mapping>
 
 

@@ -1,6 +1,7 @@
 package DB;
 
 import com.sun.rmi.rmid.ExecPermission;
+import com.sun.xml.internal.bind.v2.TODO;
 import jdk.nashorn.internal.scripts.JD;
 import org.apache.commons.lang3.time.DateUtils;
 
@@ -148,8 +149,17 @@ public class DBConnection {
                 exp.setCategory(rs.getString("CATEGORY"));
                 exp.setAmount(rs.getString("AMOUNT"));
                 exp.setIdUsuari(rs.getString("IDUSER"));
+
+              /*
+              falta arreglat aixo
+
+
                 exp.setDating(rs.getString("DIA"));
 
+
+
+
+                */
                 ar.add(exp);
 
             }
@@ -177,6 +187,15 @@ public class DBConnection {
 //            Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
             String date = sdf.format(new Date());
+
+
+            /*
+            *
+            * ARREGLAR LO DE DATE A SA BD
+            *
+            *
+            *
+            * */
 
             String addGasto = "INSERT INTO GASTOS (id_g,category,amount,iduser, dia) VALUES" +
                     "(" + id + ",'" + category + "','" + amount + "','" + idusuari + "','" + date + "')";

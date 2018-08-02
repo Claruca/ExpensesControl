@@ -8,7 +8,7 @@ public class Expenses {
     private String category;
     private String amount;
     private String idUsuari;
-    private String dating;
+    private String dia;
 
     public Expenses() {
     }
@@ -29,17 +29,16 @@ public class Expenses {
         this.category = category;
     }
 
-    public String getDating() {
-        return dating;
-    }
-
-    public void setDating(String dating) {
-        this.dating = dating;
-    }
-
     public String getAmount() {
         return amount;
+    }
 
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
     }
 
     public void setAmount(String amount) {
@@ -61,6 +60,7 @@ public class Expenses {
         category VARCHAR(25),
         amount NUMBER(5,2) NOT NULL,
         iduser VARCHAR(5),
+        dia DATE,
         PRIMARY KEY (id_g),
         FOREIGN KEY (iduser) REFERENCES EXEMPLE(ID))*/
 

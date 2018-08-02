@@ -149,6 +149,7 @@ public class DBConnection {
                 exp.setCategory(rs.getString("CATEGORY"));
                 exp.setAmount(rs.getString("AMOUNT"));
                 exp.setIdUsuari(rs.getString("IDUSER"));
+                exp.setDia(rs.getString("DIA"));
 
               /*
               falta arreglat aixo
@@ -186,7 +187,7 @@ public class DBConnection {
             Statement stmt = con.createStatement();
 //            Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-            String date = sdf.format(new Date());
+            String dia = sdf.format(new Date());
 
 
             /*
@@ -198,7 +199,7 @@ public class DBConnection {
             * */
 
             String addGasto = "INSERT INTO GASTOS (id_g,category,amount,iduser, dia) VALUES" +
-                    "(" + id + ",'" + category + "','" + amount + "','" + idusuari + "','" + date + "')";
+                    "(" + id + ",'" + category + "','" + amount + "','" + idusuari + "','" + dia + "')";
             stmt.executeUpdate(addGasto);
 //
             stmt.close();
@@ -312,7 +313,7 @@ public class DBConnection {
                 gastotipo.setAmount(rs.getString("amount"));
                 //Aqui hauria de ser s'id, pero li pos es nom, amem si cuela: Ha colat
                 gastotipo.setIdUsuari(rs.getString("name"));
-                gastotipo.setDating(rs.getString("dia"));
+                gastotipo.setDia(rs.getString("dia"));
 
                 forcat.add(gastotipo);
             }

@@ -64,7 +64,7 @@
                         "<th>" + exp.getIdUsuari() + "</th>" +
                         "<td>" + exp.getCategory() + "</td>" +
                         "<td>" + exp.getAmount() + "</td>" +
-                        "<td>" + exp.getDating() + "</td>"
+                        "<td>" + exp.getDia() + "</td>"
 
                 );
             }

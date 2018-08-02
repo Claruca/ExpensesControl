@@ -29,6 +29,7 @@ public class AddExpense extends HttpServlet {
         String amount = request.getParameter("amount");
         String idusuari = request.getParameter("id");
 
+
         DBConnection.addexpense(idg, category, amount, idusuari);
 
         /*response.setContentType("application/json");

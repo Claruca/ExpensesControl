@@ -90,7 +90,7 @@
                                     "<th>" + exp.getId() + "</th>" +
                                     "<td>" + exp.getCategory() + "</td>" +
                                     "<td>" + exp.getAmount() + "</td>" +
-                                    "<td>" + exp.getDating() + "</td>" +
+                                    "<td>" + exp.getDia() + "</td>" +
                                     "<td>" + "<button class=\"close\" aria-label=\"Close\" id=\"" + exp.getId() + "\"><span aria-hidden=\"true\">&times;</span></button>" + "</td>"
 //                                "<form action=\"/delete\" method=\"get\">\n" +
 //                                "<input  name=\"columnid\" type=\"hidden\" value=" + exp.getId() + ">" +

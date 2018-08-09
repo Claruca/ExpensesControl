@@ -23,7 +23,7 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="/index.jsp">Control de Despeses</a>
+    <a class="navbar-brand" href="index.jsp">Control de Despeses</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -75,7 +75,7 @@
         %>
         <%--<button class="btn btn-primary btn-outline-success" type="submit">Afegir gasto</button>--%>
         <div class="d-flex justify-content-end w-100">
-        <input class=" btn btn-primary btn-outline-success" type=button onClick="parent.location='/index.jsp'"
+        <input class=" btn btn-primary btn-outline-success" type=button onClick="parent.location='index.jsp'"
                value='Back'>
         </div>
 

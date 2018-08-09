@@ -1,18 +1,12 @@
 package DB;
 
-import com.sun.rmi.rmid.ExecPermission;
-import com.sun.xml.internal.bind.v2.TODO;
-import jdk.nashorn.internal.scripts.JD;
-import org.apache.commons.lang3.time.DateUtils;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Date;
 
@@ -24,7 +18,7 @@ public class DBConnection {
 
     static final String JDBC_DRIVER = "org.h2.Driver";
     static final String DB_URL = "jdbc:h2:~/test";
-    static final String USER = "admin";
+    static final String USER = "admin"; 
     static final String PASS = "system";
 
 

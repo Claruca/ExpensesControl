@@ -60,7 +60,7 @@ public class Expenses {
         category VARCHAR(25),
         amount NUMBER(5,2) NOT NULL,
         iduser VARCHAR(5),
-        dia DATE,
+        dia VARCHAR(50),
         PRIMARY KEY (id_g),
         FOREIGN KEY (iduser) REFERENCES EXEMPLE(ID))*/
 
